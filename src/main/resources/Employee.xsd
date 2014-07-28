@@ -2,9 +2,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<xs:element name="root" type="root"/>
+	<xs:element name="employeeResponse" type="employeeResponse"/>
 
-	<xs:complexType name="root">
+	<xs:complexType name="employeeResponse">
 		<xs:sequence>
 			<xs:element name="employee" minOccurs="0" maxOccurs="unbounded" type="employee" />
 		</xs:sequence>

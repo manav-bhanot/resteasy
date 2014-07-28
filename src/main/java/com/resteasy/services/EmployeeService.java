@@ -4,6 +4,7 @@
 package com.resteasy.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.resteasy.services.model.Employee;
+import com.resteasy.services.model.EmployeeResponse;
 import com.resteasy.services.model.Name;
-import com.resteasy.services.model.Root;
 
 /**
  * @author Manav
@@ -76,10 +77,22 @@ public class EmployeeService {
 	@GET
 	@Path("/json/employees/")
 	@Produces("application/json")
-	public Root listEmployeesJSON() {
+	public EmployeeResponse listEmployeesJSON() {
 		List<Employee> empList = new ArrayList<Employee>(employees.values());		
-		Root response = new Root(empList);		
+		EmployeeResponse response = new EmployeeResponse(empList);		
 		return response;
+		
+		
+		//return new Employee(new ArrayList<Employee>(employees.values()));
+		//return new EmployeeWrapper(new ArrayList<Employee>(employees.values()));
+		//return new ArrayList<Employee>(employees.values());
+	}
+	
+	@GET
+	@Path("/json/employees/list")
+	@Produces("application/json")
+	public Collection<Employee> listOfEmployeesJSON() {	
+		return employees.values();
 		
 		
 		//return new Employee(new ArrayList<Employee>(employees.values()));
