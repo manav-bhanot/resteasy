@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="hostNetworkingDataList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="hostNetworkingData" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hostNetworkingData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nic" />
+				<xs:element ref="up" />
+				<xs:element ref="switchId" />
+				<xs:element ref="port" />
+				<xs:element ref="vlansAllowPort" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nic" type="xs:string" />
+	<xs:element name="up" type="xs:int" />
+	<xs:element name="switchId" type="xs:string" />
+	<xs:element name="port" type="xs:string" />
+	<xs:element name="vlansAllowPort" type="xs:string" />
+</xs:schema>

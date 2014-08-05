@@ -14,9 +14,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.resteasy.services.model.Employee;
-import com.resteasy.services.model.EmployeeResponse;
-import com.resteasy.services.model.Name;
+import com.resteasy.services.model.employee.Employee;
+import com.resteasy.services.model.employee.EmployeeResponse;
+import com.resteasy.services.model.employee.Name;
 
 /**
  * @author Manav
@@ -25,8 +25,7 @@ import com.resteasy.services.model.Name;
 @Path("/sampleservice")
 public class EmployeeService {
 
-	private static Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
-	
+	private static Map<Integer, Employee> employees = new HashMap<Integer, Employee>();	
 
 	static {
 
@@ -41,7 +40,7 @@ public class EmployeeService {
 		employee2.setEmployeeId(2);		
 		Name emp2Name = new Name("Neha","Bhanot","Mrs.");
 		employee2.setName(emp2Name);
-		employee2.setDesignation("Software Engineer");
+		employee2.setDesignation("Professor of Chemistry");
 		employees.put(employee2.getEmployeeId(), employee2);
 
 	}
@@ -60,7 +59,7 @@ public class EmployeeService {
 		return message;
 	}
 
-	/*@GET
+	@GET
 	@Path("/employees")
 	@Produces("application/xml")
 	public List<Employee> listEmployees() {
@@ -72,7 +71,7 @@ public class EmployeeService {
 	@Produces("application/xml")
 	public Employee getEmployee(@PathParam("employeeid") String employeeId) {
 		return employees.get(employeeId);
-	}*/
+	}
 
 	@GET
 	@Path("/json/employees/")
@@ -81,11 +80,6 @@ public class EmployeeService {
 		List<Employee> empList = new ArrayList<Employee>(employees.values());		
 		EmployeeResponse response = new EmployeeResponse(empList);		
 		return response;
-		
-		
-		//return new Employee(new ArrayList<Employee>(employees.values()));
-		//return new EmployeeWrapper(new ArrayList<Employee>(employees.values()));
-		//return new ArrayList<Employee>(employees.values());
 	}
 	
 	@GET
@@ -93,18 +87,13 @@ public class EmployeeService {
 	@Produces("application/json")
 	public Collection<Employee> listOfEmployeesJSON() {	
 		return employees.values();
-		
-		
-		//return new Employee(new ArrayList<Employee>(employees.values()));
-		//return new EmployeeWrapper(new ArrayList<Employee>(employees.values()));
-		//return new ArrayList<Employee>(employees.values());
 	}
 
-	/*@GET
+	@GET
 	@Path("/json/employee/{employeeid}")
 	@Produces("application/json")
 	public Employee getEmployeeJSON(@PathParam("employeeid") String employeeId) {
 		return employees.get(employeeId);
-	}*/
+	}
 
 }

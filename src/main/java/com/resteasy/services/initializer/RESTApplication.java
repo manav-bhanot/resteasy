@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import com.resteasy.services.EmployeeService;
+import com.resteasy.services.HostNetworkingDataService;
+import com.resteasy.services.VmNetworkLocationHistoryService;
 
 /**
  * @author Manav
@@ -21,6 +23,8 @@ public class RESTApplication extends Application {
 
 	public RESTApplication() {
 		singletons.add(new EmployeeService());
+		singletons.add(new HostNetworkingDataService());
+		singletons.add(new VmNetworkLocationHistoryService());
 	}
 
 	@Override
